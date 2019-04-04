@@ -1,4 +1,8 @@
-<?php session_start(); /* Starts the session */ ?>
+<?php session_start(); /* Starts the session */
+
+$name = $_SESSION['UserData']['Username'];
+
+ ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -82,7 +86,12 @@ and open the template in the editor.
             </div>
             <nav>
                 <ul>
-                    <li><a href="login2.php">Login</a></li>
+                    <?php if(!isset($name)){
+                      echo <li><a href="login2.php">Login</a></li>;
+                      } else {
+                      echo <li><a href="logout.php">Logout ($name)</a></li>;
+                    }
+                    ?>
                     <li><a href="register.php">Register</a></li>
                     <li><a href="info.php">Shipping Info</a></li>
                 </ul>
