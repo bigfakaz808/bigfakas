@@ -40,7 +40,7 @@ if(!isset($_POST['password'])){
   echo "<br>";
 }
 
-if(isset($_POST['username'] && isset($_POST['password'])){
+if(isset($_POST['username']) && isset($_POST['password'])){
   $_SESSION['UserData']['Username'] = $_POST['username'];
   $filename = fopen('./users.txt', 'a+');
   $userData = $_POST['username'] . "," . $_POST['password'];
