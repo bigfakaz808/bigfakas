@@ -1,3 +1,4 @@
+<?php session_start(); /* Starts the session */ ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
