@@ -13,12 +13,14 @@ if(isset($_POST['Submit'])){
 $Username = isset($_POST['Username']) ? $_POST['Username'] : '';
 $Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 
-$filename = fopen('./users.txt', 'r');
+//$filename = fopen('./users.txt', 'r');
+$filename = file_get_contents('./users.txt');
+//stream_get_contents($stream, -1, 10);
 $users = explode(",", $filename);
 
 for($i = 0; $i < count($users); $i++){
   if($users[$i] == $Username && $users[$i+1] == $Password){
-    fclose($filename);
+    //fclose($filename);
 /* Check Username and Password existence in defined array */
 // if (isset($logins[$Username]) && $logins[$Username] == $Password){
 /* Success: Set session variables and redirect to Protected page  */

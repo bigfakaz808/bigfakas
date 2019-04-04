@@ -4,6 +4,6 @@ session_start();
 
 session_destroy();
 
-header("Location: invoice.php");
+header("Location: ass2.php");
 
 exit;
