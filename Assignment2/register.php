@@ -45,6 +45,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
   $filename = fopen('./users.txt', 'a+');
   $userData = $_POST['username'] . "," . $_POST['password'] . ",";
   fwrite($filename, $userData);
+  fclose($filename);
   header("Location: invoice.php");
   exit;
 }

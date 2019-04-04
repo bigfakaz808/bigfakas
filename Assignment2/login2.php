@@ -2,6 +2,7 @@
 session_start(); /* Starts the session */
 if(isset($_SESSION['UserData']['Username'])){
   header("Location: invoice.php");
+  exit;
 }
 /* Check Login form submitted */
 if(isset($_POST['Submit'])){
@@ -17,14 +18,14 @@ $users = explode(",", $filename);
 
 for($i = 0; $i < count($users); $i++){
   if($users[$i] == $Username && $users[$i+1] == $Password){
-
+    fclose($filename);
 /* Check Username and Password existence in defined array */
 // if (isset($logins[$Username]) && $logins[$Username] == $Password){
 /* Success: Set session variables and redirect to Protected page  */
     $_SESSION['UserData']['Username']=$logins[$Username];
     header("Location:invoice.php");
     exit;
-  } 
+  }
 }
 /*Unsuccessful attempt: Set error message */$msg="<span style='color:red'>Invalid Login Details</span>";
 }

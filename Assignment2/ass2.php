@@ -87,9 +87,9 @@ and open the template in the editor.
             <nav>
                 <ul>
                     <?php if(!isset($name)){
-                      echo <li><a href="login2.php">Login</a></li>;
+                      echo "<li><a href='login2.php'>Login</a></li>";
                       } else {
-                      echo <li><a href="logout.php">Logout ($name)</a></li>;
+                      echo "<li><a href='logout.php'>Logout ($name)</a></li>";
                     }
                     ?>
                     <li><a href="register.php">Register</a></li>
