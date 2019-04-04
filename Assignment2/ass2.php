@@ -1,7 +1,8 @@
 <?php session_start(); /* Starts the session */
 
-$name = $_SESSION['UserData']['Username'];
-
+if($isset($_SESSION['UserData']['Username'])){
+  $name = $_SESSION['UserData']['Username'];
+}
  ?>
 <!DOCTYPE html>
 <!--

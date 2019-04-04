@@ -30,12 +30,12 @@
 
 <?php
 $errors = array();
-if(!isset($_POST['username'])){
+if(!isset($_POST['username']) && isset($_POST['submitted'])){
   echo "No Username Submitted";
   echo "<br>";
 }
 
-if(!isset($_POST['password'])){
+if(!isset($_POST['password']) && isset($_POST['submitted']){
   echo "No Password Submitted";
   echo "<br>";
 }
