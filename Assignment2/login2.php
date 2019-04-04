@@ -24,8 +24,8 @@ for($i = 0; $i < count($users); $i++){
 /* Check Username and Password existence in defined array */
 // if (isset($logins[$Username]) && $logins[$Username] == $Password){
 /* Success: Set session variables and redirect to Protected page  */
-    $_SESSION['UserData']['Username']=$logins[$Username];
-    header("Location:invoice.php");
+    $_SESSION['UserData']['Username']=$Username;
+    header("Location: invoice.php");
     exit;
   }
 }
