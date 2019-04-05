@@ -1,33 +1,58 @@
 <?php session_start();
 
 $errors = array();
-if(!isset($_POST['username']) && isset($_POST['submitted'])){
-  echo "No Username Submitted";
-  echo "<br>";
-}
 
-if(!isset($_POST['password']) && isset($_POST['submitted'])){
-  echo "No Password Submitted";
-  echo "<br>";
-}
+if(!strlen($_POST['username']) < 3){
 
-if(isset($_POST['username']) && isset($_POST['password'])){
-  if(!empty($_POST['username']) && !empty($_POST['password'])){
-    $_SESSION['UserData']['Username'] = $_POST['username'];
-    $filename = fopen('./users.txt', 'a+');
-    $userData = $_POST['username'] . "," . $_POST['password'] . ",";
-    fwrite($filename, $userData);
-    fclose($filename);
-    if(!isset($_SESSION['items'])){
-      header("Location: ass2.php");
-      exit;
-    } else {
-      header("Location: invoice.php");
-      exit;
+  if(!isset($_POST['username']) && isset($_POST['submitted'])){
+    $errors[] = "No Username Submitted";
+    echo "<br>";
+  }
+
+  if(!isset($_POST['password']) && isset($_POST['submitted'])){
+    $errors[] = "No Password Submitted";
+    echo "<br>";
+  }
+
+  if(isset($_POST['username']) && isset($_POST['password'])){
+    if(!empty($_POST['username']) && !empty($_POST['password'])){
+
+      $get_users = file_get_contents("./users.txt");
+      $users = explode(",", $get_users);
+
+      for($i = 0; $i < count($users); $i++){
+        if($i % 2 == 0){
+          if($users[$i] == $_POST['username']){
+            $errors[] = "Sorry, this username already exists";
+          }
+        }
+      }
+
+      if(empty($errors)){
+        $_SESSION['UserData']['Username'] = $_POST['username'];
+        $filename = fopen('./users.txt', 'a+');
+        $userData = $_POST['username'] . "," . $_POST['password'] . ",";
+        fwrite($filename, $userData);
+        fclose($filename);
+        if(!isset($_SESSION['items'])){
+          header("Location: ass2.php");
+          exit;
+        } else {
+          header("Location: invoice.php");
+          exit;
+        }
+      }
     }
   }
-}
+} else {
+  $errors[] = "Username must be longer than 3 characters";
 
+  foreach ($errors as $key => $value) {
+    echo $key;
+    echo "<br>";
+  }
+
+}
 ?>
 
 <form id='register' action='register.php' method='post'
