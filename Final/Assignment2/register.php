@@ -49,7 +49,7 @@ $errors = array();
     }
   }
 
-  foreach ($i = 0; $i < count($errors); $i++) {
+  for($i = 0; $i < count($errors); $i++) {
     echo $errors[$i];
     echo "<br>";
   }
