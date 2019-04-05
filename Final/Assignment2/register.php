@@ -49,8 +49,8 @@ $errors = array();
     }
   }
 
-  foreach ($errors as $key => $value) {
-    echo $key;
+  foreach ($i = 0; $i < count($errors); $i++) {
+    echo $errors[$i];
     echo "<br>";
   }
 
